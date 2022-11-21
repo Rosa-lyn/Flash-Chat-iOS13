@@ -19,12 +19,13 @@ class LoginViewController: UIViewController {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
-                    print(error)
+                    let alert = UIAlertController(title: "Whoops, something went wrong.", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
                 } else {
                     self.performSegue(withIdentifier: "LoginToChat", sender: self)
                 }
             }
         }
     }
-    
 }
