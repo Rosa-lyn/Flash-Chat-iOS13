@@ -25,11 +25,13 @@ class RegisterViewController: UIViewController {
 
                 } else {
                     self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.emailTextfield.text = ""
+                    self.passwordTextfield.text = ""
                 }
             }
         }
     }
-    
+
     @IBAction func emailFieldChanged(_ sender: Any) {
         if !errorLabel.isHidden {
             errorLabel.isHidden = true
