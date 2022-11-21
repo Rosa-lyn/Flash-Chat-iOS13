@@ -13,19 +13,32 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
-    
+    @IBOutlet weak var errorLabel: UILabel!
+
     @IBAction func registerPressed(_ sender: UIButton) {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     print(error.localizedDescription)
-                } else {
-                    // Navigate to ChatViewController
-                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.errorLabel.text = error.localizedDescription
+                    self.errorLabel.isHidden = false
 
+                } else {
+                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
                 }
             }
         }
     }
     
+    @IBAction func emailFieldChanged(_ sender: Any) {
+        if !errorLabel.isHidden {
+            errorLabel.isHidden = true
+        }
+    }
+
+    @IBAction func passwordFieldChanged(_ sender: Any) {
+        if !errorLabel.isHidden {
+            errorLabel.isHidden = true
+        }
+    }
 }
