@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
                     self.errorLabel.isHidden = false
 
                 } else {
-                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
                     self.emailTextfield.text = ""
                     self.passwordTextfield.text = ""
                 }
