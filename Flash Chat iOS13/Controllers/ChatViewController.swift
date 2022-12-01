@@ -74,6 +74,7 @@ class ChatViewController: UIViewController {
                 if let error = error {
                     print("There was an issue saving data to Firestore: \(error)")
                 } else {
+                    self.messageTextfield.text = ""
                     print("Successfully saved data")
                 }
             }
