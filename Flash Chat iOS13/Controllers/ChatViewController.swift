@@ -64,7 +64,7 @@ class ChatViewController: UIViewController {
 
     @IBAction func sendPressed(_ sender: UIButton) {
 
-        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
+        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email, !messageBody.isEmpty {
             let document = [
                 K.FStore.senderField: messageSender,
                 K.FStore.bodyField: messageBody,
